@@ -11,12 +11,14 @@ body {
 }
 
 .left-section {
+    color: #876018;
     padding: 60px;
     min-width: 500px;
-    background-color: rgba(255, 202, 132, 255);
+    background-color: #F3D185;
 }
 
 .right-section {
+    width: max-content;
     background-color: white;
     flex-grow: 1;
 }
@@ -54,15 +56,32 @@ body {
     background-color: gray;
 }
 
-.sign-form {
-    margin-top: 50px;
+.sign-up-form {
+    margin-top: 70px;
+}
+
+.name {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.first {
-    display: flex;
-    gap: 20px;
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 50px;
+    grid-column-gap: 0;
+    align-items: center;
+
+}
+
+.form {
+    place-self: center;
+}
+
+.button {
+    place-self: center;
+    grid-column: 1 / 3;
 }
