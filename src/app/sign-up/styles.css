@@ -1,0 +1,68 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    min-height: 100%;
+    display: flex;
+}
+
+.left-section {
+    padding: 60px;
+    min-width: 500px;
+    background-color: rgba(255, 202, 132, 255);
+}
+
+.right-section {
+    background-color: white;
+    flex-grow: 1;
+}
+
+.header {
+    text-align: end;
+    padding: 30px;
+    font-size: medium;
+}
+
+.third-p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.Sign {
+    text-align: center;
+    font-size: larger;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+}
+
+.separator h2 {
+    padding: 0 1rem;
+}
+
+.separator .line {
+    flex: 1;
+    height: 3px;
+    background-color: gray;
+}
+
+.sign-form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.first {
+    display: flex;
+    gap: 20px;
+}
