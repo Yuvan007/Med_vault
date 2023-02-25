@@ -23,7 +23,7 @@ export default function Login(){
                     <Link href="#" className="flex justify-evenly p-1 text-center w-[30%] border-2 border-slate-500 rounded-md font-bold"><Image src={GoogleSVG} className="my-auto w-5 h-5" alt="Google"/><span className="mr-2">Google</span></Link>
                     <Link href="#" className="flex justify-evenly p-1 text-center w-[30%] border-2 border-slate-500 rounded-md font-bold"><Image src={FacebookSVG} className="mr-1 my-auto w-5 h-5" />Facebook</Link>
                 </div>
-                <div className="m-2 text-center text-xs">Don't have an account?<Link href='/signup' className="font-bold">Register Now</Link></div>
+                <div className="m-2 text-center text-xs">Don&apos;t have an account?<Link href='/signup' className="font-bold">Register Now</Link></div>
             </div>
         </div>
     )
