@@ -1,13 +1,33 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import "./styles.css";
 import "../../styles/globals.css";
 import GoogleSVG from "../../../public/google.svg";
 import FacebookSVG from "../../../public/facebook.svg";
 
 export default function Page() {
+  const [phone, setPhone] = useState([]);
+  const [password, setPassword] = useState([]);
+
+  const submitData = async () => {
+    const response = await fetch("/api/users", {
+      method: "POST",
+      body: JSON.stringify({
+        phone,
+        password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <div className="container">
       <div className="left-section">
@@ -59,8 +79,10 @@ export default function Page() {
               <input
                 className="my-1 h-10 rounded-md border-2 border-slate-500 p-1"
                 type="tel"
-                id="num"
-                name="num"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                id="phone"
+                name="phone"
                 autoComplete="off"
               ></input>
             </div>
@@ -70,13 +92,18 @@ export default function Page() {
               <input
                 className="my-1 h-10 rounded-md border-2 border-slate-500 p-1"
                 type="password"
-                id="passw"
-                name="passw"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                id="password"
+                name="password"
                 autoComplete="off"
               ></input>
             </div>
             <div className="button">
-              <button className="rounded-lg bg-[rgba(255,202,132,255)] px-3 py-2 font-[500]">
+              <button
+                onClick={submitData}
+                className="rounded-lg bg-[rgba(255,202,132,255)] px-3 py-2 font-[500]"
+              >
                 Create Account
               </button>
             </div>
