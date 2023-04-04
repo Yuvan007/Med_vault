@@ -5,18 +5,39 @@ import Image from "next/image";
 
 import GoogleSVG from '../../public/google.svg'
 import FacebookSVG from '../../public/facebook.svg'
+import { useEffect, useRef, useState } from "react";
 
 export default function Login(){
+    const [phoneNo,setPhoneNO] = useState('');
+    const ph=useRef<HTMLInputElement>(null);
+    const pass=useRef<HTMLInputElement>(null);
+
+    const handleSubmit=async(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
+        e.preventDefault()
+        const p=ph.current
+        const ps=pass.current
+        if (p==null || ps==null) return
+        console.log(`Here input value is ${p.value} and ${ps.value}`)
+    }
+
+    const handlePhChange=(e: React.ChangeEvent<HTMLInputElement>)=>{
+        let v=e.target.value;
+        if (v.length>10 || isNaN(+v) || v==' ') return
+        setPhoneNO(v);
+        void
+    }
+
+
     return (
         <div className="flex flex-col justify-center">
             <div className="p-11 flex flex-col bg-white rounded-3xl align-middle drop-shadow-2xl">
                 <div className="m-4 text-center font-bold text-4xl">Login</div>
                 <span className="p-2 mb-4 mx-auto max-w-[70%] text-md font-[400] text-center">Hey, Enter your details to sign in  to your account</span>
                 <form className="flex flex-col">
-                    <input className="h-10 p-1 my-2 border-2 rounded-md border-slate-600" name="phone_email" placeholder="Enter Email/ Phone No"/>
-                    <input className="h-10 p-1 my-1 border-2 rounded-md border-slate-500" name="password" placeholder="Password"/>
+                    <input className="h-10 p-1 my-2 border-2 rounded-md border-slate-600" name="phone_email" ref={ph} placeholder="Enter Email/ Phone No" value={phoneNo} onChange={handlePhChange} />
+                    <input className="h-10 p-1 my-1 border-2 rounded-md border-slate-500" name="password" ref={pass} placeholder="Password"/>
                     <Link href='/recover' className="my-3 text-sm font-bold" >Having trouble in sign in?</Link>
-                    <button className="my-2 py-2 px-3 rounded-lg font-[500] bg-[rgba(255,202,132,255)]">Sign in</button>
+                    <button className="my-2 py-2 px-3 rounded-lg font-[500] bg-[rgba(255,202,132,255)]" onClick={(e)=>handleSubmit(e)}>Sign in</button>
                 </form>
                 <div className="mt-5 mb-2 text-center font-bold text-xs">-- Or Sign in with --</div>
                 <div className="m-3 flex justify-evenly">
